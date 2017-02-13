@@ -1,4 +1,24 @@
 # Super Voices
+
+Instalación y configuración
+
+* Versión de Ruby
+
+* Dependencias
+
+* Configuración
+
+* Creación de la base de datos
+
+* Inicialización de la base de datos
+
+* Cómo correr las pruebas
+
+* Servicios
+
+* Instrucción de despliegue
+
+## Proyecto
 Universidad de los Andes. Curso ISIS4426: Desarrollo de soluciones cloud
 
 ## Primer taller: Aplicaciones web escalables en un entorno tradicional
