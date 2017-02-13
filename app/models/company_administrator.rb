@@ -1,0 +1,2 @@
+class CompanyAdministrator < ApplicationRecord
+end
