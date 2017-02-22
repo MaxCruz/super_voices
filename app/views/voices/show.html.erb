@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Creation:</strong>
+  <%= @voice.creation %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @voice.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @voice.name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @voice.last_name %>
+</p>
+
+<p>
+  <strong>Done:</strong>
+  <%= @voice.done %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @voice.message %>
+</p>
+
+<p>
+  <strong>Source url:</strong>
+  <%= @voice.source_url %>
+</p>
+
+<p>
+  <strong>Destination url:</strong>
+  <%= @voice.destination_url %>
+</p>
+
+<%= link_to 'Edit', edit_voice_path(@voice) %> |
+<%= link_to 'Back', voices_path %>
