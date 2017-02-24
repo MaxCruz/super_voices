@@ -10,51 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222071529) do
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.string   "author_type"
-    t.integer  "author_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
-  end
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-  end
+ActiveRecord::Schema.define(version: 20170224080603) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "name"
     t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "company_administrators", force: :cascade do |t|
-    t.string   "names"
-    t.string   "surnames"
     t.string   "email"
     t.string   "password"
     t.datetime "created_at", null: false
@@ -79,8 +39,8 @@ ActiveRecord::Schema.define(version: 20170222071529) do
     t.string   "name"
     t.string   "image"
     t.string   "url"
-    t.date     "start"
-    t.date     "end"
+    t.date     "start_date"
+    t.date     "end_date"
     t.text     "reward"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -88,16 +48,15 @@ ActiveRecord::Schema.define(version: 20170222071529) do
   end
 
   create_table "voices", force: :cascade do |t|
-    t.date     "creation"
     t.string   "email"
     t.string   "name"
     t.string   "last_name"
-    t.boolean  "done"
+    t.boolean  "done",            default: false
     t.text     "message"
     t.string   "source_url"
     t.string   "destination_url"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "contest_id"
   end
 
