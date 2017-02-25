@@ -60,6 +60,14 @@ class AdministratorsController < ApplicationController
     end
   end
 
+  def show_login
+  end
+
+  def perform_login
+      params.require(:administrator).permit(:email, :password)
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_administrator
