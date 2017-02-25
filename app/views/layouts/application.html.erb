@@ -1,28 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Super Voices</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>Super Voices</title>
+        <%= csrf_meta_tags %>
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  </head>
+    </head>
 
-  <body>
-    <div class="container">
-	  <%= yield %>
-	</div>
+    <body>
+        <div class="container">
+            <div class="header clearfix">
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li role="presentation" class="active"><a href="#">Companies</a></li>
+                        <% if current_user %>
+                            <li role="presentation">
+                                <%= link_to current_user.name, edit_administrator_path(current_user.id) %> 
+                            </li>
+                            <li role="presentation">
+                                <%= link_to "Logout", "/logout" %>
+                            </li> 
+                        <% else %>
+                            <li role="presentation">
+                                <%= link_to "Login", "/login" %>
+                            </li>
+                            <li role="presentation"><%= link_to "Voices", voices_path %></li>
+                        <% end %>
+                    </ul>
+                </nav>
+                <h3 class="text-muted">Super Voices</h3>
+            </div>
 
-	<footer>
-	  <div class="container">
-	    Super Voices 2017
-	  </div>
-	</footer>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.js"></script>
+            <%= yield %>
+        </div>
 
-  </body>
+        <footer>
+            <div class="container">
+                Super Voices 2017
+            </div>
+        </footer>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.js"></script>
+
+    </body>
 </html>
