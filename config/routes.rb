@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
     root "administrators#index"
     get "/administrators", to: redirect("/")
-    get "/administrator/login", to: "administrators#show_login", as: :login_form
-    post "/administrator/login", to: "administrators#perform_login", as: :login_action
+
+    get "/login", to: "sessions#new"
+    post "/login", to: "sessions#create"
+    get "/logout", to: "sessions#destroy"
 
     resources :administrators
-
     resources :voices
     resources :contests
 end

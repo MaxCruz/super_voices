@@ -1,4 +1,5 @@
 class Administrator < ApplicationRecord
+    has_secure_password
     has_many :contests
 
     validates :name, presence: true
@@ -6,6 +7,6 @@ class Administrator < ApplicationRecord
     validates :email, uniqueness: true, email: true
     validates :password, presence: true
 
-    validates_confirmation_of :password, message: 'should match confirmation'
-    validates_presence_of :password_confirmation, if: :password_changed?
+    validates_confirmation_of :password, message: 'should match'
+    validates_presence_of :password_confirmation, if: :password_digest_changed?
 end
