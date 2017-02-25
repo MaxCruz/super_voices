@@ -4,7 +4,6 @@ class AdministratorsController < ApplicationController
   # GET /administrators
   # GET /administrators.json
   def index
-    @administrators = Administrator.all
   end
 
   # GET /administrators/1
@@ -69,6 +68,6 @@ class AdministratorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def administrator_params
-      params.require(:administrator).permit(:name, :last_name, :email, :password)
+      params.require(:administrator).permit(:name, :last_name, :email, :password, :password_confirmation)
     end
 end

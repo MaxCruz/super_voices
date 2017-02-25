@@ -1,33 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="header clearfix">
+    <nav>
+        <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Companies</a></li>
+            <li role="presentation"><a href="#">Login</a></li>
+            <li role="presentation"><%= link_to "Voices", voices_path %></li>
+        </ul>
+    </nav>
+    <h3 class="text-muted">Super Voices</h3>
+</div>
 
-<h1>Administrators</h1>
+<div class="jumbotron">
+    <h1>Get a perfect voice</h1>
+    <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    <p><a class="btn btn-lg btn-success" href="administrators/new" role="button">Sign up today</a></p>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row marketing">
+    <div class="col-lg-6">
+        <h4>Feature 1</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
-  <tbody>
-    <% @administrators.each do |administrator| %>
-      <tr>
-        <td><%= administrator.name %></td>
-        <td><%= administrator.last_name %></td>
-        <td><%= administrator.email %></td>
-        <td><%= administrator.password %></td>
-        <td><%= link_to 'Show', administrator %></td>
-        <td><%= link_to 'Edit', edit_administrator_path(administrator) %></td>
-        <td><%= link_to 'Destroy', administrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <h4>Feature 2</h4>
+        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
 
-<br>
+        <h4>Feature 3</h4>
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+    </div>
 
-<%= link_to 'New Administrator', new_administrator_path %>
+    <div class="col-lg-6">
+        <h4>Feature 4</h4>
+        <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+        <h4>Feature 5</h4>
+        <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+        <h4>Feature 6</h4>
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+    </div>
+</div>
