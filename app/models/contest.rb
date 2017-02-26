@@ -1,4 +1,5 @@
 class Contest < ApplicationRecord
+    mount_uploader :image, PictureUploader
     belongs_to :administrator
     has_many :voices, :dependent => :delete_all
 
