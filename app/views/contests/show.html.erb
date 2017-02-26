@@ -7,7 +7,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @contest.image %>
+  <%= image_tag(@contest.image, width: 600) if @contest.image.present? %>
 </p>
 
 <p>
