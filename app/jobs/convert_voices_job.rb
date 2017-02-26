@@ -4,6 +4,7 @@ class ConvertVoicesJob < ApplicationJob
   def perform
 
   	Rails.logger.info("Convert Voices Job RUNNING at #{Time.now}")
+  	
 	Voice.where(done: false).find_each do |voice|
 		source_path = Rails.root.to_s + "/public" + voice.source_url.to_s
 		puts "Convert the voice: #{source_path}"
@@ -13,7 +14,7 @@ class ConvertVoicesJob < ApplicationJob
 	    voice.destination_url = destination_path
 	    voice.done = true
 	    voice.save!
-	    #UserMailer.converted_email(voice).deliver_now
+	    UserMailer.converted_email(voice).deliver_later
 	end
   end
 end
