@@ -10,7 +10,9 @@ class ContestsController < ApplicationController
   # GET /contests/1
   # GET /contests/1.json
   def show
-      @voices = Voice.where(contest_id: @contest.id).order(created_at: :desc)
+      @voices = Voice.where(contest_id: @contest.id)
+          .paginate(:page => params[:page], :per_page => 50)
+          .order(created_at: :desc)
   end
 
   # GET /contests/new

@@ -1,7 +1,8 @@
+<p id="notice"><%= notice %></p>
+
 <%= form_tag('/login', :class => 'form-signin' ) do %>
 
 	<h2 class="form-signin-heading">Please sign in</h2>
-
 	<label for="email" class="sr-only">Email address</label>
     <%= email_field_tag :email, "", class: 'form-control', placeholder: 'Email address' %>
     <label for="password" class="sr-only">Password</label>

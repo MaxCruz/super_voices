@@ -57,3 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 # job schedule
 gem 'crono'
+# Pagination
+gem 'will_paginate', '~> 3.1.0'

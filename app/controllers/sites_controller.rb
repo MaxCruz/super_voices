@@ -2,9 +2,10 @@ class SitesController < ApplicationController
     before_action :set_contest 
 
     def get_message
-        return 'Hemos recibido tu voz y la estamos procesando para que sea publicada en la' +
-            'página del concurso y pueda ser posteriormente revisada por nuestro equipo de trabajo.' +
-            'Tan pronto la voz quede publicada en la página del concurso te notificaremos por email.'
+        return 'We have received your voice and we are processing it so that it can ' + 
+            'be published in the page of the contest and can be later reviewed by ' + 
+            'our team. As soon as the voice is published in the contest page we ' + 
+            'will notify you by email.'
     end
 
     def index 
