@@ -1,13 +1,13 @@
-<h2>Login</h2>
-
 <p id="notice"><%= notice %></p>
 
-<%= form_tag '/login' do %>
+<%= form_tag('/login', :class => 'form-signin' ) do %>
 
-  Email: <%= text_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+	<h2 class="form-signin-heading">Please sign in</h2>
+	<label for="email" class="sr-only">Email address</label>
+    <%= email_field_tag :email, "", class: 'form-control', placeholder: 'Email address' %>
+    <label for="password" class="sr-only">Password</label>
+    <%= password_field_tag :password, "", class: 'form-control', placeholder: 'Password' %>
+  	<%= submit_tag("Sign in", :class => 'btn btn-lg btn-primary btn-block') %>
 
 <% end %>
 <%= link_to "Back", "/" %>
-
