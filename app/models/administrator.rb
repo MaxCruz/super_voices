@@ -1,6 +1,6 @@
 class Administrator < ApplicationRecord
     has_secure_password
-    has_many :contests
+    has_many :contests, :dependent => :delete_all 
 
     validates :name, presence: true
     validates :last_name, presence: true

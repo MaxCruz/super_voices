@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
     end
 
     def create
-        #params.require(:administrators).permit(:email, :password)
         user = Administrator.find_by_email(params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id

@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    http://www.supervoices.com/contests/<%= f.text_field :url, size: 5 %>
   </div>
 
   <div class="field">
@@ -38,7 +38,17 @@
 
   <div class="field">
     <%= f.label :reward %>
-    <%= f.text_area :reward %>
+    <%= f.number_field :reward %>
+  </div>
+
+  <div class="field">
+    <%= f.label :script %>
+    <%= f.text_area :script %>
+  </div>
+
+  <div class="field">
+    <%= f.label :recomendations %>
+    <%= f.text_area :recomendations %>
   </div>
 
   <div class="actions">

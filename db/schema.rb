@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225144321) do
+ActiveRecord::Schema.define(version: 20170225230414) do
 
   create_table "administrators", force: :cascade do |t|
     t.string   "name"
@@ -41,10 +41,12 @@ ActiveRecord::Schema.define(version: 20170225144321) do
     t.string   "url"
     t.date     "start_date"
     t.date     "end_date"
-    t.text     "reward"
+    t.decimal  "reward"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "administrator_id"
+    t.text     "script"
+    t.text     "recomendations"
   end
 
   create_table "voices", force: :cascade do |t|

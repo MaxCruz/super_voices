@@ -17,7 +17,6 @@
             <div class="header clearfix">
                 <nav>
                     <ul class="nav nav-pills pull-right">
-                        <li role="presentation" class="active"><a href="#">Companies</a></li>
                         <% if current_user %>
                             <li role="presentation">
                                 <%= link_to current_user.name, edit_administrator_path(current_user.id) %> 
@@ -29,7 +28,6 @@
                             <li role="presentation">
                                 <%= link_to "Login", "/login" %>
                             </li>
-                            <li role="presentation"><%= link_to "Voices", voices_path %></li>
                         <% end %>
                     </ul>
                 </nav>
