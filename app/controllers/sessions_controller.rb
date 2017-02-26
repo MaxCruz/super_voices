@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect_to '/contests'
         else
-            redirect_to '/login'
+            redirect_to '/login', notice: 'Wrong login. Please try again'
         end
     end
 

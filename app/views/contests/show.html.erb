@@ -1,44 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @contest.name %>
+<strong>Name:</strong>
+<%= @contest.name %>
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= image_tag(@contest.image, width: 600) if @contest.image.present? %>
+<strong>Image:</strong>
+<%= image_tag(@contest.image, width: 600) if @contest.image.present? %>
 </p>
 
 <p>
-  <% url_contest = request.base_url + "/sites/" + @contest.url %>  
-  <strong>Url:</strong>
-  <a href="<%= url_contest %>" target="_blank"><%= url_contest %></a>
+<% url_contest = request.base_url + "/sites/" + @contest.url %>  
+<strong>Url:</strong>
+<a href="<%= url_contest %>" target="_blank"><%= url_contest %></a>
 </p>
 
 <p>
-  <strong>Start:</strong>
-  <%= @contest.start_date %>
+<strong>Start:</strong>
+<%= @contest.start_date %>
 </p>
 
 <p>
-  <strong>End:</strong>
-  <%= @contest.end_date %>
+<strong>End:</strong>
+<%= @contest.end_date %>
 </p>
 
 <p>
-  <strong>Reward:</strong>
-  <%= @contest.reward %>
+<strong>Reward:</strong>
+<%= @contest.reward %>
 </p>
 
 <p>
-  <strong>Script:</strong>
-  <%= @contest.script %>
+<strong>Script:</strong>
+<%= @contest.script %>
 </p>
 
 <p>
-  <strong>Recomendations:</strong>
-  <%= @contest.recomendations %>
+<strong>Recomendations:</strong>
+<%= @contest.recomendations %>
 </p>
 
 <%= link_to 'Edit', edit_contest_path(@contest) %> 
@@ -46,33 +46,51 @@
 <h1>Voices</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Last name</th>
-      <th>Created</th>
-      <th>Status</th>
-      <th>Message</th>
-      <th>Source url</th>
-      <th>Destination url</th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th>Message</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Play</th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <% @voices.each do |voice| %>
-      <tr>
-        <td><%= voice.email %></td>
-        <td><%= voice.name %></td>
-        <td><%= voice.last_name %></td>
-        <td><%= voice.created_at %></td>
-        <td><%= voice.done ? "Converted" : "In Progress" %></td>
-        <td><%= voice.message %></td>
-        <td><%= voice.source_url %></td>
-        <td><%= voice.destination_url %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tbody>
+        <% url = request.base_url %>
+        <% @voices.each do |voice| %>
+            <% source_url = (voice.source_url) ? url + voice.source_url.url : "#" %>
+            <% source_file = (voice.source_url) ? voice.source_url_identifier : "" %>
+            <% destination_url = (voice.destination_url) ? url + voice.destination_url : "#" %>
+            <% destination_file = (voice.destination_url) ? File.basename(voice.destination_url) : "" %>
+            <tr>
+                <td><%= voice.email %></td>
+                <td><%= voice.name %></td>
+                <td><%= voice.last_name %></td>
+                <td><%= voice.created_at %></td>
+                <td><%= voice.done ? "Converted" : "In Progress" %></td>
+                <td><%= voice.message %></td>
+                <td>
+                    <a href="<%= source_url %>" download="<%= source_file %>">
+                        <%= source_file %>
+                    </a>
+                </td>
+                <td>
+                    <a href="<%= destination_url %>" download="<%= destination_file %>">
+                        <%= destination_file %>
+                    </a>
+                </td>
+                <td><%= "PLAYER HERE" %></td>
+            </tr>
+        <% end %>
+    </tbody>
 </table>
-
+<%= page_entries_info @voices %>
+<br />
+<%= will_paginate @voices %>
+<br />
 <%= link_to 'Back', contests_path %>

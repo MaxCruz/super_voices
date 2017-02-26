@@ -16,5 +16,6 @@ class ConvertVoicesJob < ApplicationJob
 	    voice.save!
 	    UserMailer.converted_email(voice).deliver_later
 	end
+    
   end
 end

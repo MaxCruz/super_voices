@@ -1,8 +1,6 @@
 <%= form_for(contest) do |f| %>
   <% if contest.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(contest.errors.count, "error") %> prohibited this contest from being saved:</h2>
-
       <ul>
       <% contest.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -23,7 +21,7 @@
 
   <div class="field">
     <%= f.label :url %>
-    http://www.supervoices.com/contests/<%= f.text_field :url, size: 5 %>
+    <%= request.base_url %>/sites/<%= f.text_field :url, size: 5 %>
   </div>
 
   <div class="field">

@@ -15,7 +15,6 @@
   <%= @administrator.email %>
 </p>
 
-<%= link_to 'Edit', edit_administrator_path(@administrator) %> |
 <% if current_user %>
     <%= link_to 'Back', "/contests" %>
 <% else %>
