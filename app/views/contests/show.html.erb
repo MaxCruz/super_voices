@@ -11,8 +11,9 @@
 </p>
 
 <p>
+  <% url_contest = request.base_url + "/contests/" + @contest.url %>  
   <strong>Url:</strong>
-  <%= @contest.url %>
+  <a href="<%= url_contest %>" target="_blank"><%= url_contest %></a>
 </p>
 
 <p>

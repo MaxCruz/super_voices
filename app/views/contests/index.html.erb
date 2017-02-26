@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Image</th>
       <th>Url</th>
       <th>Start</th>
       <th>End</th>
@@ -17,10 +16,10 @@
 
   <tbody>
     <% @contests.each do |contest| %>
+      <% url_contest = request.base_url + "/contests/" + contest.url %>  
       <tr>
         <td><%= contest.name %></td>
-        <td><%= contest.image %></td>
-        <td><%= contest.url %></td>
+        <td><a href="<%= url_contest %>" target="_blank"><%= contest.url %></a></td>
         <td><%= contest.start_date %></td>
         <td><%= contest.end_date %></td>
         <td><%= contest.reward %></td>

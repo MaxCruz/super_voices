@@ -4,7 +4,7 @@ class ContestsController < ApplicationController
   # GET /contests
   # GET /contests.json
   def index
-    @contests = Contest.all
+      @contests = Contest.where(administrator_id: current_user.id).order(created_at: :desc)
   end
 
   # GET /contests/1
@@ -69,6 +69,6 @@ class ContestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contest_params
-      params.require(:contest).permit(:name, :image, :url, :start_date, :end_date, :reward)
+      params.require(:contest).permit(:name, :image, :url, :start_date, :end_date, :reward, :script, :recomendations)
     end
 end
