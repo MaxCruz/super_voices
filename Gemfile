@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Project gems
 # upload files
 gem 'carrierwave'
+# job schedule
+gem 'crono'
