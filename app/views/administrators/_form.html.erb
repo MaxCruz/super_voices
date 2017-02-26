@@ -1,4 +1,7 @@
 <%= form_for(administrator) do |f| %>
+
+  <h2 class="new_administrator-heading">New Administrator</h2>
+
   <% if administrator.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(administrator.errors.count, "error") %> prohibited this administrator from being saved:</h2>
@@ -12,31 +15,32 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :name, class: 'sr-only' %>
+    <%= f.text_field :name, :class => 'form-control top', :placeholder => 'Name' %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+    <%= f.label :last_name, class: 'sr-only' %>
+    <%= f.text_field :last_name, :class => 'form-control middle', :placeholder => 'Last name' %>
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.label :email, class: 'sr-only' %>
+    <%= f.text_field :email, :class => 'form-control middle', :placeholder => 'Email' %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.label :password, class: 'sr-only' %>
+    <%= f.password_field :password, :class => 'form-control middle', :placeholder => 'Password' %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation, class: 'sr-only' %>
+    <%= f.password_field :password_confirmation, :class => 'form-control bottom', :placeholder => 'Confirm password' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <!-- <%= f.submit %> -->
+    <%= submit_tag("Register", :class => 'btn btn-lg btn-primary btn-block') %>
   </div>
 <% end %>
