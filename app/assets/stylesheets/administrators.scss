@@ -1,3 +1,51 @@
 // Place all the styles related to the administrators controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.new_administrator {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.new_administrator .new_administrator-heading,
+.new_administrator .checkbox {
+  margin-bottom: 10px;
+}
+.new_administrator .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.new_administrator .form-control:focus {
+  z-index: 2;
+}
+.new_administrator .actions {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.new_administrator .top {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.new_administrator .middle {
+  border-radius: 0;
+  margin-bottom: -1px;
+}
+
+.new_administrator .bottom {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
