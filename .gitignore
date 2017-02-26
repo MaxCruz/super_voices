@@ -41,4 +41,5 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
-/public/uploads/*
+#Ignore uploads from repository
+/public/uploads/

@@ -84,7 +84,12 @@
                         <%= destination_file %>
                     </a>
                 </td>
-                <td><%= "PLAYER HERE" %></td>
+                <td>
+                    <audio controls>
+                        <source src="<%= destination_url %>" type="audio/mpeg"> 
+                            Your browser does not support the audio element.
+                    </audio>
+                </td>
             </tr>
         <% end %>
     </tbody>
