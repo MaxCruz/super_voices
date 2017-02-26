@@ -41,5 +41,38 @@
   <%= @contest.recomendations %>
 </p>
 
-<%= link_to 'Edit', edit_contest_path(@contest) %> |
+<%= link_to 'Edit', edit_contest_path(@contest) %> 
+
+<h1>Voices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Last name</th>
+      <th>Created</th>
+      <th>Status</th>
+      <th>Message</th>
+      <th>Source url</th>
+      <th>Destination url</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @voices.each do |voice| %>
+      <tr>
+        <td><%= voice.email %></td>
+        <td><%= voice.name %></td>
+        <td><%= voice.last_name %></td>
+        <td><%= voice.created_at %></td>
+        <td><%= voice.done ? "Converted" : "In Progress" %></td>
+        <td><%= voice.message %></td>
+        <td><%= voice.source_url %></td>
+        <td><%= voice.destination_url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Back', contests_path %>

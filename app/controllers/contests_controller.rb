@@ -10,6 +10,7 @@ class ContestsController < ApplicationController
   # GET /contests/1
   # GET /contests/1.json
   def show
+      @voices = Voice.where(contest_id: @contest.id).order(created_at: :desc)
   end
 
   # GET /contests/new
