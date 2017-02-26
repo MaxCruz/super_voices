@@ -1,0 +1,60 @@
+<div class="header clearfix">
+    <%= image_tag(@contest.image, width: 600) if @contest.image.present? %>
+</div>
+
+<h2 class="text-muted"><%= @contest.name %></h2>
+
+<p>
+<strong>Start:</strong>
+<%= @contest.start_date %>
+</p>
+
+<p>
+<strong>End:</strong>
+<%= @contest.end_date %>
+</p>
+
+<p>
+<strong>Reward:</strong>
+<%= @contest.reward %>
+</p>
+
+<p>
+<strong>Script:</strong>
+<%= @contest.script %>
+</p>
+
+<p>
+<strong>Recomendations:</strong>
+<%= @contest.recomendations %>
+</p>
+
+<h3 class="text-muted">Voices</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Message</th>
+            <th>Destination url</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @voices.each do |voice| %>
+            <tr>
+                <td><%= voice.email %></td>
+                <td><%= voice.name %></td>
+                <td><%= voice.last_name %></td>
+                <td><%= voice.message %></td>
+                <td><%= voice.destination_url %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Voice', '/sites/'+@contest.url+'/new' %>

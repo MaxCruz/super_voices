@@ -16,7 +16,7 @@
 
   <tbody>
     <% @contests.each do |contest| %>
-      <% url_contest = request.base_url + "/contests/" + contest.url %>  
+      <% url_contest = request.base_url + "/sites/" + contest.url %>  
       <tr>
         <td><%= contest.name %></td>
         <td><a href="<%= url_contest %>" target="_blank"><%= contest.url %></a></td>

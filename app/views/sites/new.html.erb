@@ -1,0 +1,9 @@
+<div class="header clearfix">
+    <%= image_tag(@contest.image, width: 600) if @contest.image.present? %>
+</div>
+
+<h1>New Voice</h1>
+
+<%= render 'form', voice: @voice %>
+
+<%= link_to 'Back', '/sites/'+@contest.url %>
