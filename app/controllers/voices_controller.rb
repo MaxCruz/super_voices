@@ -5,6 +5,7 @@ class VoicesController < ApplicationController
   # GET /voices.json
   def index
     @voices = Voice.all
+    ConvertVoicesJob.perform_later
   end
 
   # GET /voices/1
