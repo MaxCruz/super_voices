@@ -9,7 +9,9 @@ class SitesController < ApplicationController
     end
 
     def index 
-        @voices = Voice.where(contest_id: @contest.id, done: true).order(created_at: :desc)
+        @voices = Voice.where(contest_id: @contest.id, done: true)
+            .paginate(:page => params[:page], :per_page => 20)
+            .order(created_at: :desc)
         render layout: "application_site"
     end
 
