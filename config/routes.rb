@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-    root "administrators#index"
-    get "/administrators", to: redirect("/")
 
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
@@ -10,7 +8,10 @@ Rails.application.routes.draw do
     get "/sites/:key/new", to: "sites#new"
     post "/sites/:key", to: "sites#create", as: :site_create
 
+    root "administrators#index"
+    get "/administrators", to: redirect("/")
     resources :administrators
-    resources :voices
+
     resources :contests
+
 end

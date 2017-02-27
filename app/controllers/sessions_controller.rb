@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    before_filter :authorize, only: [:destroy]
+    before_action :authorize, only: [:destroy]
     
     # GET /login
     def new

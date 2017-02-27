@@ -1,6 +1,6 @@
 class AdministratorsController < ApplicationController
     before_action :set_administrator, only: [:show, :edit, :update]
-    before_filter :authorize, only: [:show, :edit, :update]
+    before_action :authorize, only: [:show, :edit, :update]
 
     # GET /administrators
     def index
