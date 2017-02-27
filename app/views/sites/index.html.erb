@@ -29,6 +29,8 @@
 <%= @contest.recomendations %>
 </p>
 
+<%= link_to 'New Voice', '/sites/'+@contest.url+'/new' %>
+<br />
 <p id="notice"><%= notice %></p>
 
 <h3 class="text-muted">Voices</h3>
@@ -67,4 +69,3 @@
 <br />
 <%= will_paginate @voices %>
 <br />
-<%= link_to 'New Voice', '/sites/'+@contest.url+'/new' %>

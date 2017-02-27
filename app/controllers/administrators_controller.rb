@@ -4,6 +4,9 @@ class AdministratorsController < ApplicationController
 
     # GET /administrators
     def index
+        if current_user
+            redirect_to '/contests'
+        end
     end
 
     # GET /administrators/1
@@ -42,14 +45,6 @@ class AdministratorsController < ApplicationController
         end
     end
 
-    # DELETE /administrators/1
-    #def destroy
-    #  @administrator.destroy
-    #  respond_to do |format|
-    #    format.html { redirect_to administrators_url, notice: 'Administrator was successfully destroyed.' }
-    #  end
-    #end
-
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_administrator
@@ -60,4 +55,5 @@ class AdministratorsController < ApplicationController
     def administrator_params
         params.require(:administrator).permit(:name, :last_name, :email, :password, :password_confirmation)
     end
+
 end

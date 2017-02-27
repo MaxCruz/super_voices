@@ -1,42 +1,42 @@
 <%= form_for voice, url: site_create_path(@contest.url) do |f| %>
-  <% if voice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(voice.errors.count, "error") %> prohibited this voice from being saved:</h2>
+    <% if voice.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(voice.errors.count, "error") %> prohibited this voice from being saved:</h2>
 
-      <ul>
-      <% voice.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+            <ul>
+                <% voice.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+    <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+    <div class="field">
+        <%= f.label :message %>
+        <%= f.text_area :message %>
+    </div>
 
-  <div class="field">
-    <%= f.label :message %>
-    <%= f.text_area :message %>
-  </div>
+    <div class="field">
+        <%= f.label :source_url %>
+        <%= f.file_field :source_url %>
+    </div>
 
-  <div class="field">
-    <%= f.label :source_url %>
-    <%= f.file_field :source_url %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
 <% end %>

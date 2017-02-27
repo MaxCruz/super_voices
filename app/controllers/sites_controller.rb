@@ -7,7 +7,8 @@ class SitesController < ApplicationController
             'our team. As soon as the voice is published in the contest page we ' + 
             'will notify you by email.'
     end
-
+    
+    # GET /sites/:key
     def index 
         @voices = Voice.where(contest_id: @contest.id, done: true)
             .paginate(:page => params[:page], :per_page => 20)
@@ -15,6 +16,7 @@ class SitesController < ApplicationController
         render layout: "application_site"
     end
 
+    # GET /sites/:key/new
     def new
         @voice = Voice.new
         render layout: "application_site"

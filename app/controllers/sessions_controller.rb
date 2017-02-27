@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
     before_filter :authorize, only: [:destroy]
-
+    
+    # GET /login
     def new
     end
 
+    # POST /login
     def create
         user = Administrator.find_by_email(params[:email])
         if user && user.authenticate(params[:password])
@@ -14,6 +16,7 @@ class SessionsController < ApplicationController
         end
     end
 
+    # GET /logout
     def destroy
         session[:user_id] = nil
         redirect_to '/'
