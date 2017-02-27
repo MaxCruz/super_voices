@@ -2,12 +2,11 @@ class ConvertVoicesJob < ApplicationJob
   queue_as :default
 
   def perform
-
-  	Rails.logger.info("Convert Voices Job RUNNING at #{Time.now}")
-  	
-	Voice.where(done: false).find_each do |voice|
+    start = Time.now
+  	found_voices = Voice.where(done: false) 
+    number = found_voices.size
+	found_voices.find_each do |voice|
         source_path = voice.source_url.current_path
-		#source_path = Rails.root.to_s + "/public" + voice.source_url.to_s
         output_file_name = File.basename(source_path, File.extname(source_path))
 		puts "Convert the voice: #{source_path}"
         destination_path = File.dirname(source_path) + "/#{output_file_name}.mp3"
@@ -18,6 +17,9 @@ class ConvertVoicesJob < ApplicationJob
 	    voice.save!
         UserMailer.converted_email(voice, "http://www.supervoices.com").deliver_later
 	end
-    
+    finish = Time.now
+    logger = Logger.new('log/conver_voice_job.log')
+    logger.info "#{start.localtime}, #{number}, #{finish-start}"
   end
+
 end

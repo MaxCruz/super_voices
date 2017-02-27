@@ -34,7 +34,6 @@ class SitesController < ApplicationController
     end
 
     private
-
     def set_contest
         @contest = Contest.find_by(url: params[:key])
     end
