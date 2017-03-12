@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Use postgresql as database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -55,7 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Project gems
 # upload files
 gem 'carrierwave'
-# job schedule
-gem 'crono'
 # Pagination
 gem 'will_paginate', '~> 3.1.0'
