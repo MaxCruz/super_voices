@@ -43,3 +43,6 @@ bower.json
 
 #Ignore uploads from repository
 /public/uploads/
+
+# Ignore environment variables configuration
+environment.sh
