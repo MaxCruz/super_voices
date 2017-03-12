@@ -1,28 +1,22 @@
 development:
-  adapter: postgresql
-  encoding: unicode
+  adapter: sqlite3 
   pool: 5
-  database: <%= ENV['DB_NAME_DEVELOPMENT'] %> 
-  username: <%= ENV['DB_USER'] %> 
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT'] %>
+  timeout: 5000
+  database: db/development.sqlite3 
 
 test:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: <%= ENV['DB_NAME_TEST'] %> 
-  username: <%= ENV['DB_USER'] %> 
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT'] %>
+  database: super-voices_test
+  username: super-voices
+  password:
 
 production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: <%= ENV['DB_NAME_PRODUCTION'] %> 
+  database: <%= ENV['DB_NAME'] %> 
   username: <%= ENV['DB_USER'] %> 
   password: <%= ENV['DB_PASSWORD'] %>
   host: <%= ENV['DB_HOST'] %>
