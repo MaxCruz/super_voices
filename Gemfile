@@ -62,3 +62,6 @@ gem 'will_paginate', '~> 3.1.0'
 
 # job schedule
 gem 'crono'
+
+# Email through SES
+gem 'aws-ses', '~> 0.4.4', require: 'aws/ses'
