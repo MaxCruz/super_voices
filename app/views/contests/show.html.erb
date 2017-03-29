@@ -61,11 +61,10 @@
     </thead>
 
     <tbody>
-        <% url = request.base_url %>
         <% @voices.each do |voice| %>
-            <% source_url = (voice.source_url) ? url + voice.source_url.url : "#" %>
+            <% source_url = (voice.source_url) ? voice.source_url.url : "#" %>
             <% source_file = (voice.source_url) ? voice.source_url_identifier : "" %>
-            <% destination_url = (voice.destination_url) ? url + voice.destination_url : "#" %>
+            <% destination_url = (voice.destination_url) ? voice.destination_url : "#" %>
             <% destination_file = (voice.destination_url) ? File.basename(voice.destination_url) : "" %>
             <tr>
                 <td><%= voice.email %></td>
