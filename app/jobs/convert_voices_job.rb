@@ -6,9 +6,12 @@ class ConvertVoicesJob < ApplicationJob
   	found_voices = Voice.where(done: false) 
     number = found_voices.size
 	found_voices.find_each do |voice|
+
+
         source_path = voice.source_url.current_path
         output_file_name = File.basename(source_path, File.extname(source_path))
-		puts "Convert the voice: #{source_path}"
+		
+        puts "Convert the voice: #{source_path}"
         destination_path = File.dirname(source_path) + "/#{output_file_name}.mp3"
 	    puts "To voice: #{destination_path}"
 	    system "lame #{source_path} #{destination_path}"

@@ -58,4 +58,6 @@ gem 'carrierwave'
 
 # job schedule
 gem 'crono'
+# FOG AWS
+gem 'fog-aws'
 

@@ -81,3 +81,57 @@ DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is depreca
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(8809780061980450035)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (111.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "super-voices_development"[0m
+  [1m[35m (109.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "super-voices_test"[0m
+  [1m[35m (346.5ms)[0m  [1m[35mCREATE DATABASE "super-voices_development" ENCODING = 'unicode'[0m
+  [1m[35m (260.5ms)[0m  [1m[35mCREATE DATABASE "super-voices_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "administrators" ("id" serial primary key, "name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "company_contests" ("id" serial primary key, "name" character varying, "image" character varying, "url" character varying, "start" timestamp, "end" timestamp, "payment" decimal, "script" text, "guidelines" text, "company_administrator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "contests" ("id" serial primary key, "name" character varying, "image" character varying, "url" character varying, "start_date" date, "end_date" date, "reward" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "administrator_id" integer, "script" text, "recomendations" text)[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "crono_jobs" ("id" serial primary key, "job_id" character varying NOT NULL, "log" text, "last_performed_at" timestamp, "healthy" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_crono_jobs_on_job_id" ON "crono_jobs" USING btree ("job_id")[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE TABLE "voices" ("id" serial primary key, "email" character varying, "name" character varying, "last_name" character varying, "done" boolean DEFAULT 'f', "message" text, "source_url" character varying, "destination_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "contest_id" integer)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170311035332)[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-02 16:29:12 UTC], ["updated_at", 2017-04-02 16:29:12 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "administrators" ("id" serial primary key, "name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "company_contests" ("id" serial primary key, "name" character varying, "image" character varying, "url" character varying, "start" timestamp, "end" timestamp, "payment" decimal, "script" text, "guidelines" text, "company_administrator_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "contests" ("id" serial primary key, "name" character varying, "image" character varying, "url" character varying, "start_date" date, "end_date" date, "reward" decimal, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "administrator_id" integer, "script" text, "recomendations" text)[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "crono_jobs" ("id" serial primary key, "job_id" character varying NOT NULL, "log" text, "last_performed_at" timestamp, "healthy" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_crono_jobs_on_job_id" ON "crono_jobs" USING btree ("job_id")[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "voices" ("id" serial primary key, "email" character varying, "name" character varying, "last_name" character varying, "done" boolean DEFAULT 'f', "message" text, "source_url" character varying, "destination_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "contest_id" integer)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170311035332)[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-02 16:29:12 UTC], ["updated_at", 2017-04-02 16:29:12 UTC]]
+  [1m[35m (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8809780061980450035);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8809780061980450035)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
