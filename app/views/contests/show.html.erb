@@ -64,8 +64,8 @@
         <% @voices.each do |voice| %>
             <% source_url = (voice.source_url) ? voice.source_url.url : "#" %>
             <% source_file = (voice.source_url) ? voice.source_url_identifier : "" %>
-            <% destination_url = (voice.destination_url) ? voice.destination_url : "#" %>
-            <% destination_file = (voice.destination_url) ? File.basename(voice.destination_url) : "" %>
+            <% destination_url = (voice.destination_url) ? voice.destination_url.url : "#" %>
+            <% destination_file = (voice.destination_url) ? voice.destination_url_identifier : "" %>
             <tr>
                 <td><%= voice.email %></td>
                 <td><%= voice.name %></td>
