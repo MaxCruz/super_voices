@@ -1,5 +1,6 @@
 class Voice < ApplicationRecord
 	mount_uploader :source_url, VoiceUploader
+    mount_uploader :destination_url, VoiceUploader
     belongs_to :contest
 
     validates :email, presence: true, email: true
