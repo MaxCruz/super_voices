@@ -15,24 +15,24 @@ class ConvertVoicesJob < ApplicationJob
             contest_id = message['contest_id'].to_i
             contest = message['contest'].to_s
             input, output = create_io
-            base_key = "#{contest_id}/#{id}/"
+            base_key = "#{contest_id}/#{id}"
             source_target = "#{input}/#{name}"
             name_converted = name_converted(name)
             destination_target = "#{output}/#{name_converted}"
-            puts "Dowload the file #{name} from url #{link}"
-            download_s3(s3, "#{base_key}#{name}", source_target)
-            puts "Convert #{source} To #{destination}"
+            puts "Dowload the file #{name}"
+            download_s3(s3, "#{base_key}/#{name}", source_target)
+            puts "Convert #{source_target} To #{destination_target}"
             system "lame #{source_target} #{destination_target}"
-            upload_s3(s3, "#{base_key}#{name_converted}", destination_target) 
+            upload_s3(s3, "#{base_key}/#{name_converted}", destination_target) 
             sqs_delete_message(sqs, m.receipt_handle)
             send_email(email, contest)
-            clear(path_input, path_output)
+            clear(input, output)
             puts "Done"
         end
     end
 
     def send_email(email, contest) 
-        base_url = "http://34.205.202.116"
+        base_url = "http://www.supervoices.com" 
         UserMailer.converted_email(email, contest, base_url).deliver_later
     end
 
