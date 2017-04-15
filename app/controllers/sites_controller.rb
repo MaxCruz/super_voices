@@ -1,4 +1,9 @@
+require 'json'
+
 class SitesController < ApplicationController
+
+    include AwsHelper
+
     before_action :set_contest 
 
     def get_message
@@ -7,10 +12,10 @@ class SitesController < ApplicationController
             'our team. As soon as the voice is published in the contest page we ' + 
             'will notify you by email.'
     end
-    
+
     # GET /sites/:key
     def index 
-        @voices = Voice.where(contest_id: @contest.id, done: true)
+        @voices = Voice.where(contest_id: @contest.id)
             .paginate(:page => params[:page], :per_page => 20)
             .order(created_at: :desc)
         render layout: "application_site"
@@ -28,6 +33,15 @@ class SitesController < ApplicationController
         @voice.contest_id = @contest.id
         respond_to do |format|
             if @voice.save
+                message = {
+                    'id' => @voice.id,
+                    'name' => @voice.source_url.file.filename,
+                    'email' => @voice.email,
+                    'contest_id' => @voice.contest.id,
+                    'contest' => @voice.contest.url
+                }
+                sqs = sqs_client
+                sqs_send_message(sqs, JSON[message])
                 format.html { redirect_to "/sites/" + @contest.url, notice: get_message }
             else
                 format.html { render :new, layout: "application_site" }

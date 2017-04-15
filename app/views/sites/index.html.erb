@@ -47,9 +47,13 @@
     </thead>
 
     <tbody>
-        <% url = request.base_url %>
         <% @voices.each do |voice| %>
-            <% destination_url = (voice.destination_url) ? url + voice.destination_url : "#" %>
+            <% done, destination_url, destination_file = converted_voice(voice) %>
+            <% 
+            if ! done 
+                next 
+            end 
+            %>
             <tr>
                 <td><%= voice.email %></td>
                 <td><%= voice.name %></td>
