@@ -59,5 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave'
 # Pagination
 gem 'will_paginate', '~> 3.1.0'
+
 # FOG AWS
 gem 'fog-aws'
+gem 'aws-sdk'

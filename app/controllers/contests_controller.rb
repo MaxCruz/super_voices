@@ -1,4 +1,7 @@
 class ContestsController < ApplicationController
+    
+    include AwsHelper
+    
     before_action :set_contest, only: [:show, :edit, :update, :destroy]
     before_action :authorize
 
@@ -49,8 +52,8 @@ class ContestsController < ApplicationController
 
     # DELETE /contests/1
     def destroy
-        FileUtils.rm_rf("public/uploads/contest/image/#{@contest.id}")
-        FileUtils.rm_rf("public/uploads/voice/#{@contest.id}")
+        s3 = s3_client 
+        delete_s3(s3, "#{@contest.id}/")
         @contest.destroy
         respond_to do |format|
             format.html { redirect_to contests_url, notice: 'Contest was successfully destroyed.' }
