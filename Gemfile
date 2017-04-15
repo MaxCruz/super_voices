@@ -60,4 +60,4 @@ gem 'carrierwave'
 gem 'crono'
 # FOG AWS
 gem 'fog-aws'
-
+gem 'aws-sdk'
