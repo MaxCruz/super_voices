@@ -23,13 +23,20 @@ module AwsHelper
         return result.messages
     end
 
+    def sqs_send_message(sqs, body)
+        sqs.send_message(
+            queue_url: sqs_url(sqs),
+            message_body: body
+        )
+    end
+
     def sqs_delete_message(sqs, receipt)
         sqs.delete_message({
             queue_url: sqs_url(sqs),
             receipt_handle: receipt
         })
     end
-    
+
     def s3_client
         return Aws::S3::Client.new(region: ENV["AWS_REGION"], credentials: credentials)
     end
@@ -50,6 +57,28 @@ module AwsHelper
                 body: file
             )
         end
+    end
+
+    def delete_s3(s3, key)
+        resp = s3.list_objects_v2(bucket: ENV["AWS_BUCKET"])
+        resp.contents.each do |obj|
+            if obj.key.start_with?(key)
+                s3.delete_object({
+                    bucket: ENV["AWS_BUCKET"],
+                    key: obj.key
+                })
+            end
+        end
+    end
+
+    def file_exist_s3(s3, key)
+        resp = s3.list_objects_v2(bucket: ENV["AWS_BUCKET"])
+        resp.contents.each do |obj|
+            if obj.key.start_with?(key)
+                return true
+            end
+        end
+        return false
     end
 
 end
