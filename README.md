@@ -1,36 +1,24 @@
-# Super Voices
+# README
 
-Instalación y configuración
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-* Versión de Ruby
+Things you may want to cover:
 
-* Dependencias
+* Ruby version
 
-* Configuración
+* System dependencies
 
-* Creación de la base de datos
+* Configuration
 
-      sudo systemctl start postgresql.service
+* Database creation
 
-      su - postgres
+* Database initialization
 
-      createuser super-voices -d -s
+* How to run the test suite
 
-      createdb -Osuper-voices -Eutf8 super-voices_development
+* Services (job queues, cache servers, search engines, etc.)
 
-      createdb -Osuper-voices -Eutf8 super-voices_test
+* Deployment instructions
 
-      createdb -Osuper-voices -Eutf8 super-voices
-
-
-* Inicialización de la base de datos
-
-* Cómo correr las pruebas
-
-* Servicios
-
-* Instrucción de despliegue
-
-## Proyecto
-Universidad de los Andes. Curso ISIS4426: Desarrollo de soluciones cloud
-
+* ...

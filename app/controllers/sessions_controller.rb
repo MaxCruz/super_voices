@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
 
     # POST /login
     def create
-        user = Administrator.find_by_email(params[:email])
+        user = Administrator.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
+            session[:user_id] = user.id.to_s
             redirect_to '/contests'
         else
             redirect_to '/login', notice: 'Wrong login. Please try again'

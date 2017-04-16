@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
     def current_user
         if session[:user_id] 
-            count = Administrator.count(session[:user_id])
+            count = Administrator.where("_id": session[:user_id]).count()
             if count == 0
                 session.delete(:message)
             else

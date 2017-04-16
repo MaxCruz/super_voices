@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 require 'json'
 
 class SitesController < ApplicationController
@@ -16,8 +17,8 @@ class SitesController < ApplicationController
     # GET /sites/:key
     def index 
         @voices = Voice.where(contest_id: @contest.id)
+            .order_by(:created_at => 'desc')
             .paginate(:page => params[:page], :per_page => 20)
-            .order(created_at: :desc)
         render layout: "application_site"
     end
 
@@ -30,7 +31,8 @@ class SitesController < ApplicationController
     # POST /sites/:key
     def create
         @voice = Voice.new(voice_params)
-        @voice.contest_id = @contest.id
+        @voice.contest = @contest
+        @voice.created_at = DateTime.now()
         respond_to do |format|
             if @voice.save
                 message = {

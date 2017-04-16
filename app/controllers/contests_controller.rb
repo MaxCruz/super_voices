@@ -1,7 +1,9 @@
+require 'will_paginate/array'
+
 class ContestsController < ApplicationController
-    
+
     include AwsHelper
-    
+
     before_action :set_contest, only: [:show, :edit, :update, :destroy]
     before_action :authorize
 
@@ -13,8 +15,8 @@ class ContestsController < ApplicationController
     # GET /contests/1
     def show
         @voices = Voice.where(contest_id: @contest.id)
+            .order_by(:created_at => 'desc')
             .paginate(:page => params[:page], :per_page => 50)
-            .order(created_at: :desc)
     end
 
     # GET /contests/new
@@ -30,6 +32,15 @@ class ContestsController < ApplicationController
     def create
         @contest = Contest.new(contest_params)
         @contest.administrator = current_user
+        sy = contest_params["start_date(1i)"].to_i
+        sm = contest_params["start_date(2i)"].to_i
+        sd = contest_params["start_date(3i)"].to_i
+        @contest.start_date = Date.new(sy, sm, sd)
+        ey = contest_params["end_date(1i)"].to_i
+        em = contest_params["end_date(2i)"].to_i
+        ed = contest_params["end_date(3i)"].to_i
+        @contest.end_date = Date.new(ey, em, ed)
+        @contest.created_at = DateTime.now()
         respond_to do |format|
             if @contest.save
                 format.html { redirect_to @contest, notice: 'Contest was successfully created.' }
@@ -42,7 +53,21 @@ class ContestsController < ApplicationController
     # PATCH/PUT /contests/1
     def update
         respond_to do |format|
-            if @contest.update(contest_params)
+            @contest.name = contest_params[:name]
+            @contest.image = contest_params[:image]
+            @contest.url = contest_params[:url]
+            sy = contest_params["start_date(1i)"].to_i
+            sm = contest_params["start_date(2i)"].to_i
+            sd = contest_params["start_date(3i)"].to_i
+            @contest.start_date = Date.new(sy, sm, sd)
+            ey = contest_params["end_date(1i)"].to_i
+            em = contest_params["end_date(2i)"].to_i
+            ed = contest_params["end_date(3i)"].to_i
+            @contest.end_date = Date.new(ey, em, ed)
+            @contest.reward = contest_params[:reward]
+            @contest.script = contest_params[:script]
+            @contest.recomendations = contest_params[:recomendations]
+            if @contest.save()
                 format.html { redirect_to @contest, notice: 'Contest was successfully updated.' }
             else
                 format.html { render :edit }

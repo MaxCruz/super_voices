@@ -47,10 +47,12 @@
     </thead>
 
     <tbody>
+        <% n = 0 %>
         <% @voices.each do |voice| %>
             <% done, destination_url, destination_file = converted_voice(voice) %>
             <% 
             if ! done 
+                n = n + 1
                 next 
             end 
             %>
@@ -69,7 +71,7 @@
         <% end %>
     </tbody>
 </table>
-<%= page_entries_info @voices %>
+<%= my_page_entries_info(@voices, n) %>
 <br />
 <%= will_paginate @voices %>
 <br />

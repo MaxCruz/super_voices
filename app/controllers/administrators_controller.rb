@@ -25,6 +25,7 @@ class AdministratorsController < ApplicationController
     # POST /administrators
     def create
         @administrator = Administrator.new(administrator_params)
+        @administrator.created_at = DateTime.now()
         respond_to do |format|
             if @administrator.save
                 format.html { redirect_to '/', notice: 'Administrator was successfully created. Please login' }
