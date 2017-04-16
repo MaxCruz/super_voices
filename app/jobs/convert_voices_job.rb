@@ -9,10 +9,10 @@ class ConvertVoicesJob < ApplicationJob
         messages = sqs_messages(sqs)
         messages.each do |m|
             message = JSON.parse(m.body)
-            id = message['id'].to_i
+            id = message['id'].to_s
             name = message['name'].to_s
             email = message['email'].to_s
-            contest_id = message['contest_id'].to_i
+            contest_id = message['contest_id'].to_s
             contest = message['contest'].to_s
             input, output = create_io
             base_key = "#{contest_id}/#{id}"

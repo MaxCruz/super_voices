@@ -10,69 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311035332) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "administrators", force: :cascade do |t|
-    t.string   "name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  create_table "company_contests", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image"
-    t.string   "url"
-    t.datetime "start"
-    t.datetime "end"
-    t.decimal  "payment"
-    t.text     "script"
-    t.text     "guidelines"
-    t.integer  "company_administrator_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  create_table "contests", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image"
-    t.string   "url"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.decimal  "reward"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "administrator_id"
-    t.text     "script"
-    t.text     "recomendations"
-  end
+ActiveRecord::Schema.define(version: 20170416061114) do
 
   create_table "crono_jobs", force: :cascade do |t|
-    t.string   "job_id",            null: false
-    t.text     "log"
+    t.string   "job_id",                               null: false
+    t.text     "log",               limit: 1073741823
     t.datetime "last_performed_at"
     t.boolean  "healthy"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["job_id"], name: "index_crono_jobs_on_job_id", unique: true, using: :btree
-  end
-
-  create_table "voices", force: :cascade do |t|
-    t.string   "email"
-    t.string   "name"
-    t.string   "last_name"
-    t.boolean  "done",            default: false
-    t.text     "message"
-    t.string   "source_url"
-    t.string   "destination_url"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "contest_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
   end
 
 end
