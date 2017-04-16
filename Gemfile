@@ -76,4 +76,5 @@ gem 'aws-sdk'
 # Environment
 gem 'figaro'
 
- 
+# Redis
+gem 'redis-session-store' 

@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
         s3 = s3_client
         if file_exist_s3(s3, key)
             done = true
-            url = "https://s3.amazonaws.com/#{ENV["AWS_BUCKET"]}/#{key}"
+            url = "http://d2va84y79r496d.cloudfront.net/#{key}"
+            #url = "https://s3.amazonaws.com/#{ENV["AWS_BUCKET"]}/#{key}"
             file = basename
         end
         return done, url, file
