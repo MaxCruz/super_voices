@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
         done = false
         url = ""
         file = ""
-        name = voice.source_url.file.filename
+        name = voice.source_url.file.path
         basename = "#{File.basename(name, File.extname(name))}_output.mp3"
         key = "#{voice.contest.id}/#{voice.id}/#{basename}"
         s3 = s3_client

@@ -36,10 +36,10 @@ class SitesController < ApplicationController
         respond_to do |format|
             if @voice.save
                 message = {
-                    'id' => @voice.id,
-                    'name' => @voice.source_url.file.filename,
+                    'id' => @voice.id.to_s,
+                    'name' => File.basename(@voice.source_url.file.path),
                     'email' => @voice.email,
-                    'contest_id' => @voice.contest.id,
+                    'contest_id' => @voice.contest.id.to_s,
                     'contest' => @voice.contest.url
                 }
                 sqs = sqs_client
