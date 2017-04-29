@@ -14,7 +14,7 @@ module RabbitPublisherHelper
 		@exchange.publish(message, :routing_key => @queue.name)
 	end
 
-	def disconect
+	def disconnect
 		@connection.close
 	end
 
