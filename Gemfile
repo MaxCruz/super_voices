@@ -81,4 +81,3 @@ gem 'redis-session-store'
 
 # RabbitMQ
 gem 'bunny'
-gem 'sneakers'

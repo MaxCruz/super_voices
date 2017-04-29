@@ -14,6 +14,12 @@ module RabbitPublisherHelper
 		@exchange.publish(message, :routing_key => @queue.name)
 	end
 
+	def subscribe
+		@queue.subscribe(:block => true, :manual_ack => true) do |delivery_info, properties, payload|
+			puts "Received #{payload}, message properties are #{properties.inspect}"
+		end
+	end
+
 	def disconnect
 		@connection.close
 	end
