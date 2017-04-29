@@ -4,7 +4,7 @@ module RabbitPublisherHelper
 
 	def connect
 		@connection = Bunny.new(ENV['RABBITMQ_BIGWIG_TX_URL'])
-		connection.start
+		@connection.start
 		channel = connection.create_channel
 		@queue = channel.queue(ENV['RABBITMQ_QUEUE'], auto_delete => true)
 		@exchange = channel.default_exchange
