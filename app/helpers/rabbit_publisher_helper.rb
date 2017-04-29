@@ -6,7 +6,7 @@ module RabbitPublisherHelper
 		connection = Bunny.new(ENV['RABBITMQ_BIGWIG_TX_URL'])
 		connection.start
 		channel = connection.create_channel
-		seilf.channel = channel
+		self.channel = channel
 	end
 
 	def publish(exchange_name, message)
