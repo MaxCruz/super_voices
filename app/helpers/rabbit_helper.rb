@@ -2,26 +2,28 @@ require 'bunny'
 
 module RabbitHelper
 
-	def connect
+	def rmq_connect
 		@connection = Bunny.new(ENV['RABBITMQ_BIGWIG_TX_URL'])
 		@connection.start
-		channel = @connection.create_channel
-		@queue = channel.queue(ENV['RABBITMQ_QUEUE'], :auto_delete => false)
-		@exchange = channel.default_exchange
+		@channel = @connection.create_channel
+		@queue = @channel.queue(ENV['RABBITMQ_QUEUE'], :auto_delete => false)
+		@exchange = @channel.default_exchange
 	end
 
-	def publish(message)
+	def rmq_disconnect
+		@connection.close
+	end
+
+	def rmq_publish(message)
 		@exchange.publish(message, :routing_key => @queue.name)
 	end
 
-	def subscribe
-		@queue.subscribe do |delivery_info, properties, payload|
-			puts "Received #{payload}, message properties are #{properties.inspect}"
-		end
+	def rmq_queue
+		return @queue 
 	end
 
-	def disconnect
-		@connection.close
+	def rmq_channel
+		return @channel
 	end
 
 end

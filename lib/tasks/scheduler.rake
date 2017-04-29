@@ -1,3 +1,3 @@
 task :convert_voice => :environment do
-	ConvertVoice.new.convert
+	ConvertVoice.new.start
 end

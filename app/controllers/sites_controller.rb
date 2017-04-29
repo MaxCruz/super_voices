@@ -4,6 +4,7 @@ require 'json'
 class SitesController < ApplicationController
 
     include AwsHelper
+    include RabbitHelper
 
     before_action :set_contest 
 
@@ -42,9 +43,10 @@ class SitesController < ApplicationController
                     'contest_id' => @voice.contest.id.to_s,
                     'contest' => @voice.contest.url
                 }
-                sqs = sqs_client
-                sqs_send_message(sqs, JSON[message])
-                format.html { redirect_to "/sites/" + @contest.url, notice: get_message }
+		rmq_connect
+		rmq_publish(JSON[message])
+		rmq_disconnect
+		format.html { redirect_to "/sites/" + @contest.url, notice: get_message }
             else
                 format.html { render :new, layout: "application_site" }
             end
