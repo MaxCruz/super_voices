@@ -78,6 +78,3 @@ gem 'figaro'
 
 # Redis
 gem 'redis-session-store' 
-
-# Unicorn
-gem 'unicorn'
