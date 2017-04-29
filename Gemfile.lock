@@ -38,6 +38,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    amq-protocol (2.1.0)
     arel (7.1.4)
     aws-sdk (2.9.7)
       aws-sdk-resources (= 2.9.7)
@@ -51,6 +52,8 @@ GEM
     bindex (0.5.0)
     bson (4.2.1)
     builder (3.2.3)
+    bunny (2.6.5)
+      amq-protocol (>= 2.1.0)
     byebug (9.0.6)
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
@@ -211,6 +214,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk
   bcrypt (~> 3.1.7)
+  bunny
   byebug
   carrierwave
   carrierwave-mongoid

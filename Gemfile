@@ -78,3 +78,6 @@ gem 'figaro'
 
 # Redis
 gem 'redis-session-store' 
+
+# RabbitMQ
+gem 'bunny'
