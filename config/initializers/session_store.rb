@@ -6,7 +6,7 @@ Rails.application.config.session_store :redis_session_store, {
   redis: {
     expire_after: 90.minutes,
     key_prefix: 'super-voices:session:',
-    url: "redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}/0",
+    url: ENV['REDIS_URL'],
   }
 } 
 
