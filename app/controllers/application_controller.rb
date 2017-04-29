@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
     include AwsHelper
 
-    protect_from_forgery with: :exception
+    protect_from_forgery with: :null_session
 
     def current_user
         if session[:user_id] 
