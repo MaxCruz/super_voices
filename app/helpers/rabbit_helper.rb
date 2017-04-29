@@ -1,6 +1,6 @@
 require 'bunny'
 
-module RabbitPublisherHelper
+module RabbitHelper
 
 	def connect
 		@connection = Bunny.new(ENV['RABBITMQ_BIGWIG_TX_URL'])
@@ -15,7 +15,7 @@ module RabbitPublisherHelper
 	end
 
 	def subscribe
-		@queue.subscribe(:block => true, :manual_ack => true) do |delivery_info, properties, payload|
+		@queue.subscribe do |delivery_info, properties, payload|
 			puts "Received #{payload}, message properties are #{properties.inspect}"
 		end
 	end
