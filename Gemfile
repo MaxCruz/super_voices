@@ -66,7 +66,7 @@ gem 'mongoid'
 gem 'carrierwave'
 gem 'carrierwave-mongoid'
 
-# Pagination
+# Paginate
 gem 'will_paginate'
 
 # AWS
