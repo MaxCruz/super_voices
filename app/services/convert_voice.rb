@@ -38,13 +38,13 @@ class ConvertVoice
 		puts "Convert #{source_target} To #{destination_target}"
 		system "lame #{source_target} #{destination_target}"
 		upload_s3(s3, "#{base_key}/#{name_converted}", destination_target) 
-		#send_email(email, contest)
+		send_email(email, contest)
 		clear(input, output)
 		puts "Done"
 	end
 
 	def send_email(email, contest) 
-		base_url = "http://www.supervoices.com" 
+		base_url = "https://super-voices.herokuapp.com" 
 		UserMailer.converted_email(email, contest, base_url).deliver_later
 	end
 

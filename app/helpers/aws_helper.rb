@@ -6,37 +6,6 @@ module AwsHelper
         return Aws::Credentials.new(ENV["AWS_ACCESS_KEY_ID"], ENV["AWS_SECRET_ACCESS_KEY"]) 
     end
 
-    def sqs_client
-        return Aws::SQS::Client.new(region: ENV["AWS_REGION"], credentials: credentials)
-    end
-
-    def sqs_url(sqs)
-        resp = sqs.create_queue(queue_name: ENV["AWS_QUEUE"])
-        return resp.queue_url
-    end
-
-    def sqs_messages(sqs)
-        result = sqs.receive_message({
-            queue_url: sqs_url(sqs), 
-            max_number_of_messages: 1
-        })
-        return result.messages
-    end
-
-    def sqs_send_message(sqs, body)
-        sqs.send_message(
-            queue_url: sqs_url(sqs),
-            message_body: body
-        )
-    end
-
-    def sqs_delete_message(sqs, receipt)
-        sqs.delete_message({
-            queue_url: sqs_url(sqs),
-            receipt_handle: receipt
-        })
-    end
-
     def s3_client
         return Aws::S3::Client.new(region: ENV["AWS_REGION"], credentials: credentials)
     end
