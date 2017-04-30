@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170430060913) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "crono_jobs", force: :cascade do |t|
-    t.string   "job_id",                               null: false
-    t.text     "log",               limit: 1073741823
+    t.string   "job_id",            null: false
+    t.text     "log"
     t.datetime "last_performed_at"
     t.boolean  "healthy"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.index ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["job_id"], name: "index_crono_jobs_on_job_id", unique: true, using: :btree
   end
 
 end
