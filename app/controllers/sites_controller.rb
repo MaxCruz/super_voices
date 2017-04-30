@@ -34,6 +34,7 @@ class SitesController < ApplicationController
         @voice = Voice.new(voice_params)
         @voice.contest = @contest
         @voice.created_at = DateTime.now()
+	@voice.converted = false
         respond_to do |format|
             if @voice.save
                 message = {

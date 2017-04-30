@@ -10,6 +10,7 @@ class Voice
     field :message, type: String
     field :source, type: String
     field :created_at, type: DateTime
+    field :converted, type: Boolean
 
     belongs_to :contest 
 

@@ -18,6 +18,14 @@ module RabbitHelper
 		@exchange.publish(message, :routing_key => @queue.name)
 	end
 
+	def rmq_count_messages
+		return @queue.message_count
+	end
+
+	def rmq_count_consumers
+		return @queue.consumer_count
+	end
+
 	def rmq_queue
 		return @queue 
 	end
