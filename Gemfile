@@ -81,3 +81,6 @@ gem 'redis-session-store'
 
 # RabbitMQ
 gem 'bunny'
+
+# Autoscale
+gem 'rails_autoscale_agent'

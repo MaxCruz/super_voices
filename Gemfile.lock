@@ -155,6 +155,8 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_autoscale_agent (0.1.0)
+      activesupport (>= 3.2)
     railties (5.0.2)
       actionpack (= 5.0.2)
       activesupport (= 5.0.2)
@@ -227,6 +229,7 @@ DEPENDENCIES
   mongoid
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rails_autoscale_agent
   redis-session-store
   sass-rails (~> 5.0)
   spring
