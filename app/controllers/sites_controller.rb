@@ -32,7 +32,17 @@ class SitesController < ApplicationController
 
     # POST /sites/:key
     def create
-        @voice = Voice.new(voice_params)
+        @voice = Voice.new
+	@voice.email = voice_params["email"] 
+	@voice.name = voice_params["name"] 
+	@voice.last_name = voice_params["last_name"] 
+	@voice.message = voice_params["message"] 
+	puts "IS URL>>> #{voice_params["source_url_url"].present?}"
+	if voice_params["source_url_url"].present?
+	    @voice.remote_source_url_url = voice_params["source_url_url"]  
+	else
+	    @voice.source_url = voice_params["source_url"]  
+	end
         @voice.contest = @contest
         @voice.created_at = DateTime.now()
 	@voice.converted = false
@@ -61,7 +71,7 @@ class SitesController < ApplicationController
     end
 
     def voice_params
-        params.require(:voice).permit(:email, :name, :last_name, :message, :source_url)
+        params.require(:voice).permit(:email, :name, :last_name, :message, :source_url, :source_url_url)
     end
 
 end
