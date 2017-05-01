@@ -4,9 +4,10 @@ class ScaleWorkerJob < ActiveJob::Base
 	include HerokuHelper
 
 	def perform
-		min = 1
-		max = 6
-		limit = 10
+		min = ENV["WORKERS_MIN"]
+		max = ENV["WORKERS_MAX"]
+		limit = ENV["WORKERS_JOB_LIMIT"]
+		increment = ENV["WORKERS_INCREMENT"]
 		rmq_connect
 		heroku_connect
 		messages = rmq_count_messages
@@ -14,12 +15,12 @@ class ScaleWorkerJob < ActiveJob::Base
 		puts "Status: #{messages} queued messages for #{consumers} consumers"
 		if messages >= limit && consumers < max
 			puts "Increase one instance"
-			n = consumers + 1
+			n = consumers + increment
 			heroku_scale("worker", n)
 		else
 			if consumers > min
 				puts "Decrease one instance"
-				n = consumers - 1
+				n = consumers - increment
 				heroku_scale("worker", n)
 			end
 		end
