@@ -92,3 +92,6 @@ gem 'heroku-api'
 
 # Crono
 gem 'crono'
+
+# New Relic
+gem 'newrelic_rpm'
