@@ -26,6 +26,7 @@ class SitesController < ApplicationController
     # GET /sites/:key/new
     def new
         @voice = Voice.new
+	response.headers['X-Csrf-Token'] = form_authenticity_token
         render layout: "application_site"
     end
 
