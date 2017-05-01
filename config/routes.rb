@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get "/sites/:key", to: "sites#index"
     get "/sites/:key/new", to: "sites#new"
     post "/sites/:key", to: "sites#create", as: :site_create
+    post "/sites/:key/publish", to: "sites#publish", as: :site_publish
 
     root "administrators#index"
     get "/administrators", to: redirect("/")

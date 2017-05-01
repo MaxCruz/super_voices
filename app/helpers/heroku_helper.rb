@@ -7,7 +7,7 @@ module HerokuHelper
 	end
 
 	def heroku_scale(dyno, n)
-		if n > 6
+		if n > 10
 			return
 		end
 		@heroku.post_ps_scale("super-voices", dyno, n)
