@@ -4,9 +4,9 @@ class ScaleWorkerJob < ActiveJob::Base
 	include HerokuHelper
 
 	def perform
-		min = ENV["WORKERS_MIN"]
-		max = ENV["WORKERS_MAX"]
-		limit = ENV["WORKERS_JOB_LIMIT"]
+		min = ENV["WORKERS_MIN"].to_1
+		max = ENV["WORKERS_MAX"].to_1
+		limit = ENV["WORKERS_JOB_LIMIT"].to_i
 		increment = ENV["WORKERS_INCREMENT"]
 		rmq_connect
 		heroku_connect
