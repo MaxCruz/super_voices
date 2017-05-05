@@ -1,6 +1,6 @@
 class ScalingJob < ActiveJob::Base
 
-	include RabbitHelper
+	include RabbitHelper1
 	include HerokuHelper
 
 	def perform
