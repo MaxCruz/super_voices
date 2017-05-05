@@ -13,4 +13,4 @@
 #
 # Crono.perform(TestJob).every 2.days, at: '15:30'
 #
-Crono.perform(ScaleWorkerJob).every 1.minute
+Crono.perform(ScalingJob).every 1.minute
