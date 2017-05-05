@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     post "/sites/:key", to: "sites#create", as: :site_create
     post "/sites/:key/publish", to: "sites#publish", as: :site_publish
 
+    get "/hirefire/#{ENV["HIREFIRE_TOKEN"]}/info", to: "session#queue"
+
     root "administrators#index"
     get "/administrators", to: redirect("/")
     resources :administrators
