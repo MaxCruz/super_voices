@@ -12,7 +12,7 @@ class ScaleWorkerJob < ActiveJob::Base
 		heroku_connect
 		messages = rmq_count_messages.to_i
 		consumers = rmq_count_consumers.to_i
-		puts "Status: #{messages} queued messages for #{consumers} consumers"
+		puts "Current status: #{messages} queued messages for #{consumers} consumers"
 		if messages >= limit && consumers < max
 			puts "Increase one instance"
 			n = consumers + increment
