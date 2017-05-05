@@ -13,6 +13,8 @@ class ScalingJob < ActiveJob::Base
 		messages = rmq_count_messages
 		consumers = rmq_count_consumers
 		puts "Current status: #{messages} queued messages for #{consumers} consumers"
+		puts "Limit for consumer: #{limit}"
+		puts "Maximun workers: #{max}"
 		if messages >= limit && consumers < max
 			puts "Increase one instance"
 			n = consumers + increment
