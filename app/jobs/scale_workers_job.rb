@@ -1,13 +1,13 @@
-class ScaleWorkerJob < ActiveJob::Base
+class ScalingJob < ActiveJob::Base
 
 	include RabbitHelper
 	include HerokuHelper
 
 	def perform
-		min = 1
-		max = 6
-		limit = 10
-		increment = 1
+		min = ENV["WORKERS_MIN"].to_i
+		max = ENV["WORKERS_MAX"].to_i
+		limit = ENV["WORKERS_JOB_LIMIT"].to_i
+		increment = ENV["WORKERS_INCREMENT"].to_i
 		rmq_connect
 		heroku_connect
 		messages = rmq_count_messages
