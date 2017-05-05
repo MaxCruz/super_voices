@@ -12,7 +12,7 @@ class ConvertVoice
 	def start
 		s3 = s3_client
 		rmq_connect
-		rmq_queue.subscribe(:manual_ack => true, :block => true) do |delivery_info, properties, payload|
+		rmq_queue.subscribe(:block => true) do |delivery_info, properties, payload|
 			puts "Received #{payload}"
 			message = JSON.parse(payload)
 			convert(message, s3)
