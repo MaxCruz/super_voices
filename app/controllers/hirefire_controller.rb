@@ -6,7 +6,8 @@ class HirefireController < ApplicationController
 		rmq_connect
 		messages = rmq_count_messages
 		msg = { :name => "worker", :quantity => messages }
-		render status: 200, json: msg.to_json
+		array= [ msg ]
+		render status: 200, json: array.to_json
 		rmq_disconnect
 	end
 
