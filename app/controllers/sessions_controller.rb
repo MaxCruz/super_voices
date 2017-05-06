@@ -22,11 +22,4 @@ class SessionsController < ApplicationController
 		redirect_to '/'
 	end
 
-	def queue
-		respond_to do |format|
-			msg = { :name => "worker", :quantity => 1000 }
-			format.json  { render :json => msg }
-		end
-	end
-
 end
